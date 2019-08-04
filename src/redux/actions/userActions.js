@@ -12,7 +12,7 @@ export const loginUser = (userData, history) => dispatch => {
   axios
     .post("/login", userData)
     .then(res => {
-      setAuthorizationHeader(res.data.token);
+      setAuthorizationHeader(res.data.tokenId);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/"); //redirect to home page

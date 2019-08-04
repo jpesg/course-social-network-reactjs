@@ -9,6 +9,10 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Typography from "@material-ui/core/Typography";
 import { TextField, Grid, Button, CircularProgress } from "@material-ui/core";
 
+//redux
+import { connect } from "react-redux";
+import { signupUser } from "../redux/actions/userActions";
+
 const styles = theme => ({
   ...theme.styles
 });
@@ -21,11 +25,15 @@ export class SingUp extends Component {
       password: "",
       confirmPassword: "",
       handle: "",
-      loading: false,
       errors: {}
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.ui.errors) {
+      this.setState({ errors: nextProps.ui.errors });
+    }
+  }
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -34,9 +42,6 @@ export class SingUp extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.setState({
-      loading: true
-    });
 
     const newUserData = {
       email: this.state.email,
@@ -44,27 +49,15 @@ export class SingUp extends Component {
       confirmPassword: this.state.confirmPassword,
       handle: this.state.handle
     };
-    axios
-      .post("/signup", newUserData)
-      .then(res => {
-        console.log("signup:", res.data);
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        this.setState({
-          loading: false
-        });
-        this.props.history.push("/"); //redirect to home page
-      })
-      .catch(err => {
-        this.setState({
-          errors: err.response.data,
-          loading: false
-        });
-      });
+    this.props.signupUser(newUserData, this.props.history);
   };
   render() {
-    const { classes } = this.props;
-    const { errors, loading } = this.state;
-    console.log(errors);
+    const {
+      classes,
+      ui: { loading }
+    } = this.props;
+    const { errors } = this.state;
+
     return (
       <Grid className={classes.form}>
         <Grid item sm />
@@ -152,6 +145,18 @@ export class SingUp extends Component {
   }
 }
 SingUp.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  ui: PropTypes.object.isRequired,
+  signupUser: PropTypes.func.isRequired
 };
-export default withStyles(styles)(SingUp);
+
+const mapStateToProps = state => ({
+  user: state.user,
+  ui: state.ui
+});
+
+export default connect(
+  mapStateToProps,
+  { signupUser }
+)(withStyles(styles)(SingUp));

@@ -51,8 +51,6 @@ class Login extends Component {
     } = this.props;
     const { errors } = this.state;
 
-    console.log(errors);
-
     return (
       <Grid className={classes.form}>
         <Grid item sm />
