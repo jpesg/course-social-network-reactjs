@@ -11,8 +11,8 @@ import { TextField, Grid, Button, CircularProgress } from "@material-ui/core";
 
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
-const styles = theme => ({
-  ...theme.styles
+const styles = (theme) => ({
+  ...theme.styles,
 });
 
 class Login extends Component {
@@ -21,33 +21,33 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      error: {}
+      error: {},
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.ui.errors) {
-      this.setState({ errors: nextProps.ui.errors });
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.ui.errors !== this.props.ui.errors && this.props.ui.errors) {
+      this.setState({ errors: this.props.ui.errors });
     }
   }
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const userData = {
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
     };
     this.props.loginUser(userData, this.props.history);
   };
   render() {
     const {
       classes,
-      ui: { loading /*errors*/ }
+      ui: { loading /*errors*/ },
     } = this.props;
     const { errors } = this.state;
 
@@ -117,19 +117,19 @@ Login.propTypes = {
   classes: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  ui: PropTypes.object.isRequired
+  ui: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
-    ui: state.ui
+    ui: state.ui,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    loginUser: (userData, history) => dispatch(loginUser(userData, history))
+    loginUser: (userData, history) => dispatch(loginUser(userData, history)),
   };
 };
 

@@ -13,8 +13,8 @@ import { TextField, Grid, Button, CircularProgress } from "@material-ui/core";
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
 
-const styles = theme => ({
-  ...theme.styles
+const styles = (theme) => ({
+  ...theme.styles,
 });
 
 export class SingUp extends Component {
@@ -25,36 +25,37 @@ export class SingUp extends Component {
       password: "",
       confirmPassword: "",
       handle: "",
-      errors: {}
+      errors: {},
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.ui.errors) {
-      this.setState({ errors: nextProps.ui.errors });
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.ui.errors !== this.props.ui.errors && this.props.ui.errors) {
+      this.setState({ errors: this.props.ui.errors });
     }
   }
-  handleChange = e => {
+
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     const newUserData = {
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
-      handle: this.state.handle
+      handle: this.state.handle,
     };
     this.props.signupUser(newUserData, this.props.history);
   };
   render() {
     const {
       classes,
-      ui: { loading }
+      ui: { loading },
     } = this.props;
     const { errors } = this.state;
 
@@ -148,15 +149,14 @@ SingUp.propTypes = {
   classes: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   ui: PropTypes.object.isRequired,
-  signupUser: PropTypes.func.isRequired
+  signupUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user,
-  ui: state.ui
+  ui: state.ui,
 });
 
-export default connect(
-  mapStateToProps,
-  { signupUser }
-)(withStyles(styles)(SingUp));
+export default connect(mapStateToProps, { signupUser })(
+  withStyles(styles)(SingUp)
+);
