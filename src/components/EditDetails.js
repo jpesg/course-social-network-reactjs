@@ -16,6 +16,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { EditIcon } from "@material-ui/icons";
+import MyButton from "../util/MyButton";
 const styles = (theme) => ({
   ...theme,
   button: {
@@ -71,11 +72,14 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip tile="edit details">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
+        <MyButton
+          tip="edit details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
+          <EditIcon color="primary" />
+        </MyButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

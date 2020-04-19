@@ -1,5 +1,4 @@
-//5:17
-//6:35:00
+//7:54 navbar
 import React from "react";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";

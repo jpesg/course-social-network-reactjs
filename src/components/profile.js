@@ -7,15 +7,7 @@ import { Link } from "react-router-dom";
 import { uploadImage, logoutUser } from "../redux/actions/userActions";
 import EditDetails from "./EditDetails";
 //MUI
-import {
-  Grid,
-  Button,
-  Paper,
-  Link as MuiLink,
-  Typography,
-  IconButton,
-  Tooltip,
-} from "@material-ui/core";
+import { Button, Paper, Link as MuiLink, Typography } from "@material-ui/core";
 import {
   EditIcon,
   LocationOn,
@@ -23,6 +15,7 @@ import {
   CalendarToday,
   KeyboardReturn,
 } from "@material-ui/icons";
+import MyButton from "../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.styles,
@@ -69,11 +62,13 @@ class Profile extends Component {
                 id="imageInput"
                 onChange={this.handleImageChange}
               />
-              <Tooltip title="edit profile picture" placement="top">
-                <IconButton onCicl={this.handleEditpicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              <MyButton
+                tip="edit profile picture"
+                onClick={this.handleEditpicture}
+                btnClassName="button"
+              >
+                <EditIcon color="primary" />
+              </MyButton>
             </div>
             <hr />
             <div className="profile-details">
@@ -114,11 +109,9 @@ class Profile extends Component {
                 </Fragment>
               )}
             </div>
-            <Tooltip title="logout" placement="top">
-              <IconButton onClick={this.handleLogout}>
-                <KeyboardReturn color="primary"></KeyboardReturn>
-              </IconButton>
-            </Tooltip>
+            <MyButton tip="logout" onClick={this.handleLogout}>
+              <KeyboardReturn color="primary"></KeyboardReturn>
+            </MyButton>
             <EditDetails />
           </div>
         </Paper>
