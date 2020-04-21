@@ -16,7 +16,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-
+import SreamDialog from "./ScreamDialog";
 import DeleteScream from "./DeleteScream";
 import MyButton from "../util/MyButton";
 
@@ -123,6 +123,7 @@ function Scream(props) {
           <ChatIcon color="primary"></ChatIcon>
         </MyButton>
         <span>{comentCount} comments</span>
+        <ScreamDialog screamId={screamId} userHandle={userHandle} />
       </CardContent>
     </Card>
   );

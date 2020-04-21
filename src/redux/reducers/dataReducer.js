@@ -23,7 +23,13 @@ export default function (state = initialState, action) {
     case SET_SCREAMS:
       return {
         ...state,
-        scremas: action.payload,
+        screams: action.payload,
+        loading: false,
+      };
+    case SET_SCREAM:
+      return {
+        ...state,
+        scream: action.payload,
         loading: false,
       };
     case LIKE_SCREAM:
