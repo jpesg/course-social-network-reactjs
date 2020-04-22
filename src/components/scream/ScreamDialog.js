@@ -5,9 +5,10 @@ import dayJs from "dayJs";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { getScream } from "../../redux/actions/dataActions";
+import { getScream, clearErrors } from "../../redux/actions/dataActions";
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 import {
   Dialog,
   DialogContent,
@@ -53,6 +54,7 @@ class ScreamDialog extends Component {
     this.props.getScream(this.props.screamId);
   };
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false });
   };
 
@@ -110,6 +112,7 @@ class ScreamDialog extends Component {
           <span>{comentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
         <Comments comments={comments} />
       </Grid>
     );
@@ -145,6 +148,7 @@ class ScreamDialog extends Component {
 }
 ScreamDialog.propTypes = {
   getScream: Proptypes.func.isRequired,
+  clearErrors: Proptypes.func.isRequired,
   screamId: Proptypes.string.isRequired,
   userHandle: Proptypes.string.isRequired,
   scream: Proptypes.object.isRequired,
@@ -156,6 +160,7 @@ const mapStateToProps = (state) => ({
 });
 const mapActionsToProps = {
   getScream,
+  clearErrors,
 };
 export default connect(
   mapStateToProps,

@@ -10,6 +10,7 @@ import {
   STOP_LOADING,
   POST_SCREAM,
   SET_SCREAM,
+  SUBMIT_COMMENT,
 } from "../types";
 
 export const getScreams = () => (dispatch) => {
@@ -89,4 +90,19 @@ export const getScream = (screamId) => (dispatch) => {
       dispatch({ type: STOP_LOADING });
     })
     .catch((e) => console.log(e));
+};
+
+export const submitComment = (screamId, commentData) => (dispatch) => {
+  axios
+    .post(`/scream/${screamId}/comment`, commentData)
+    .then((res) => {
+      dispatch({ type: SUBMIT_COMMENT, payload: res.data });
+      dispatch(clearErrors());
+    })
+    .catch((e) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: e.response.data,
+      });
+    });
 };
