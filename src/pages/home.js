@@ -5,8 +5,8 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getScreams } from "../redux/actions/dataActions";
 import PropTypes from "prop-types";
-import Scream from "../components/scream";
-import Profile from "../components/profile.js";
+import Scream from "../components/scream/scream";
+import Profile from "../components/profile/profile.js";
 
 export class Home extends Component {
   /*state = {

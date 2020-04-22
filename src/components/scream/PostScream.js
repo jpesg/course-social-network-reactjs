@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 import {
   Button,
   TextField,
@@ -13,7 +13,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { AddIcon, Close } from "@material-ui/icons";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme,

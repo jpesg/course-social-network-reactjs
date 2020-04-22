@@ -15,7 +15,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import ChatIcon from "@material-ui/icons/Chat";
 import ScreamDialog from "./ScreamDialog";
 import DeleteScream from "./DeleteScream";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 import LikeButton from "./LikeButton";
 
 const styles = {

@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import withStyles from "@material-ui/core/styles/withStyles";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { uploadImage, logoutUser } from "../redux/actions/userActions";
+import { uploadImage, logoutUser } from "../../redux/actions/userActions";
 import EditDetails from "./EditDetails";
 //MUI
 import { Button, Paper, Link as MuiLink, Typography } from "@material-ui/core";
@@ -15,7 +15,7 @@ import {
   CalendarToday,
   KeyboardReturn,
 } from "@material-ui/icons";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme.styles,

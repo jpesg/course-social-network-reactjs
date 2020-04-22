@@ -8,7 +8,7 @@ import axios from "axios";
 import Home from "./pages/home";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/layout/NavBar";
 import AuthRoute from "./util/AuthRoute";
 
 import "./App.css";

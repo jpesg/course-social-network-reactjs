@@ -5,9 +5,9 @@ import dayJs from "dayJs";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { getScream } from "../redux/actions/dataActions";
+import { getScream } from "../../redux/actions/dataActions";
 import LikeButton from "./LikeButton";
-
+import Comments from "./Comments";
 import {
   Dialog,
   DialogContent,
@@ -16,14 +16,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import { ChatIcon, Close, UnfoldMore } from "@material-ui/icons";
-import MyButton from "../util/MyButton";
+import MyButton from "../../util/MyButton";
 
 const styles = (theme) => ({
   ...theme,
-  invisibleSeparator: {
-    border: "none",
-    margin: 4,
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -71,6 +67,7 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
+        comments,
       },
       ui: { loading },
     } = this.props;
@@ -112,6 +109,8 @@ class ScreamDialog extends Component {
           </MyButton>
           <span>{comentCount} comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <Comments comments={comments} />
       </Grid>
     );
     return (
