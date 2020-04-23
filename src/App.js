@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./pages/home";
+import User from "./pages/user";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Navbar from "./components/layout/NavBar";
@@ -68,6 +69,7 @@ function App() {
                   component={Login}
                   //authenticated={authenticated}
                 />
+                <Route exact path="/user/:handle" component={User} />
               </Switch>
             </div>
           </Router>
