@@ -49,6 +49,7 @@ function Scream(props) {
       authenticated,
       credentials: { handle },
     },
+    openDialog,
   } = props;
 
   dayjs.extend(relativeTime);
@@ -86,7 +87,11 @@ function Scream(props) {
           <ChatIcon color="primary"></ChatIcon>
         </MyButton>
         <span>{comentCount} comments</span>
-        <ScreamDialog screamId={screamId} userHandle={userHandle} />
+        <ScreamDialog
+          screamId={screamId}
+          userHandle={userHandle}
+          openDialog={openDialog}
+        />
       </CardContent>
     </Card>
   );
@@ -96,6 +101,7 @@ Scream.propTypes = {
   user: PropTypes.object.isRequired,
   scream: PropTypes.object.isRequired,
   classess: PropTypes.object.isRequired,
+  openDialog: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({

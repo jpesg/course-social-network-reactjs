@@ -10,6 +10,7 @@ export const LOADING_UI = "LOADING_UI";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const LOADING_DATA = "LOADING_DATA";
 export const STOP_LOADING = "STOP_LOADING";
+export const MARK_NOTIFICATIONS_READ = "MARK_NOTIFICATIONS_READ";
 
 //date reducer types
 export const SET_SCREAMS = "SET_SCREAMS";

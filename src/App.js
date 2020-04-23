@@ -70,6 +70,11 @@ function App() {
                   //authenticated={authenticated}
                 />
                 <Route exact path="/user/:handle" component={User} />
+                <Route
+                  exact
+                  path="/user/:handle/scream/:screamId"
+                  component={User}
+                />
               </Switch>
             </div>
           </Router>
