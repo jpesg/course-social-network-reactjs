@@ -7,6 +7,7 @@ import { getScreams } from "../redux/actions/dataActions";
 import PropTypes from "prop-types";
 import Scream from "../components/scream/scream";
 import Profile from "../components/profile/profile.js";
+import ScreamSkeleton from "../util/ScreamSkeleton";
 
 export class Home extends Component {
   /*state = {
@@ -33,7 +34,7 @@ export class Home extends Component {
     let recentScreamsMarkup = !loading ? (
       screams.map((scream) => <Scream key={scream.screamId} scream={scream} />)
     ) : (
-      <p>Loading</p>
+      <ScreamSkeleton />
     );
     return (
       <Grid container spacing={10}>

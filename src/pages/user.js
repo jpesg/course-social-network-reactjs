@@ -11,6 +11,9 @@ import StaticProfile from "../components/profile/StaticProfile";
 
 import { Grid } from "@material-ui/core";
 
+import ScreamSkeleton from "../util/ScreamSkeleton";
+import ProfileSkeleton from "../util/ProfileSkeleton";
+
 const styles = (theme) => ({
   ...theme,
 });
@@ -42,7 +45,7 @@ class user extends Component {
     const { screamIdParam } = this.state;
 
     const screamsMarkup = loading ? (
-      <p>loading data</p>
+      <ScreamSkeleton />
     ) : screams === null ? (
       <p>no screams from this user</p>
     ) : !screamIdParam ? (
@@ -63,7 +66,7 @@ class user extends Component {
         </Grid>
         <Grid item sm={4} xs={12}>
           {this.state.profile === null ? (
-            <p>loading profile ...</p>
+            <ProfileSkeleton />
           ) : (
             <StaticProfile profile={this.state.profile} />
           )}

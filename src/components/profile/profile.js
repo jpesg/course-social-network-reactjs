@@ -17,8 +17,10 @@ import {
 } from "@material-ui/icons";
 import MyButton from "../../util/MyButton";
 
+import ProfileSkeleton from "../../util/ProfileSkeleton";
+
 const styles = (theme) => ({
-  ...theme.styles,
+  ...theme,
 });
 
 class Profile extends Component {
@@ -141,7 +143,7 @@ class Profile extends Component {
         </Paper>
       )
     ) : (
-      <p>loading</p>
+      <ProfileSkeleton />
     );
 
     return profileMarkup;
